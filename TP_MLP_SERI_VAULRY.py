@@ -68,7 +68,7 @@ print(accuracy_score(y_test, prediction))
 print("--- %s seconds ---" % (time.time() - start_time))
 
 
-# In[30]:
+# In[6]:
 
 
 scaler = StandardScaler()
@@ -158,8 +158,13 @@ for i in range(0,10):
     
 
 
-# In[ ]:
+# In[7]:
 
 
-
+start_time = time.time()
+mlp=MLPClassifier(solver='adam',random_state=1, max_iter=100, hidden_layer_sizes=(500,),alpha=1e-6)
+mlp.fit(X_train_scaler, y_train)
+prediction = mlp.predict(X_test_scaler)
+print(accuracy_score(y_test, prediction))
+print("--- %s seconds ---" % (time.time() - start_time))
 
