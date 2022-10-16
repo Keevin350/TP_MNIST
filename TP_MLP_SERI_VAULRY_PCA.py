@@ -16,7 +16,7 @@ warnings.simplefilter("ignore")
 mnist = fetch_openml("mnist_784")
 
 
-# In[3]:
+# In[2]:
 
 
 mnist.data
@@ -42,7 +42,7 @@ for i in range(10):
     
 
 
-# In[6]:
+# In[3]:
 
 
 import time 
@@ -70,7 +70,7 @@ print(accuracy_score(y_test, prediction))
 print("--- %s seconds ---" % (time.time() - start_time))
 
 
-# In[7]:
+# In[4]:
 
 
 scaler = StandardScaler()
@@ -162,6 +162,17 @@ for i in range(0,5):
         MaximumScore = accuracy_score(y_test, prediction)
         print(accuracy_score(y_test, prediction))
         print("--- %s seconds ---" % (time.time() - start_time))
+
+
+# In[7]:
+
+
+start_time = time.time()
+mlp=MLPClassifier(random_state=1, max_iter=200, hidden_layer_sizes=(500,),learning_rate = "invscaling")
+mlp.fit(X_train_scaler, y_train)
+prediction = mlp.predict(X_test_scaler)
+print(accuracy_score(y_test, prediction))
+print("--- %s seconds ---" % (time.time() - start_time))
 
 
 # In[ ]:
